@@ -48,6 +48,20 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+  
+      <li class="nav-item ml-auto">
+        <a href="{% url 'logout' %}" class="nav-link">logout</a>
+      </li>
+
+  
+      </li>
+      
+      {% endif %}
+
+
+
     </ul>
   </nav>
 
