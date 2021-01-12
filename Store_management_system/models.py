@@ -13,7 +13,7 @@ class Company(models.Model):
     added_on = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.id }"
 
     def get_absolute_url(self):
         return reverse('index')

@@ -19,7 +19,13 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{%static 'dist/css/adminlte.min.css'%}">
 </head>
-
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 <section class="content">
     <div class="container-fluid">
@@ -56,10 +62,13 @@
                                     <td>{{company.contact_no}}</td>
                                     <td>{{company.email}}</td>
                                     <td>{{company.added_on}}</td>
-                                    <td><a href="" class="btn btn-primary">Edit</a>
+                                    <td><a href="{%url 'update' company.id%}" class="btn btn-primary">Edit</a>
                             
                                         <form action="" method="post">
-                                          <button class="btn btn-danger" type="submit">Delete</button>
+                                            {%csrf_token%}
+                                              <button class="btn btn-danger" type="submit">
+                                                <a href="{%url 'delete' company.pk %}">Delete</a>
+                                          </button>
                                         </form>
                                     </td>
                                 </tr>
